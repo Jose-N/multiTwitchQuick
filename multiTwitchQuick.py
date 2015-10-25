@@ -17,4 +17,4 @@ if len(sys.argv) > 1:
 			kadgar = kadgar + streams[i] + "/"
 		webbrowser.open(kadgar)
 
-# Open webbrowser
+#TODO: Add ability to see who is live and for how long they have been live
