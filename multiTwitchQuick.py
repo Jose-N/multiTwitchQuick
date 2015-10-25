@@ -8,13 +8,11 @@ from bs4 import BeautifulSoup
 # Grab usernames from command line
 if len(sys.argv) > 1:
 	if  "watch" == ''.join(sys.argv[1]):
-		streams = []
-		numStreams = input("How many channels do you want to watch?")
-		for i in range(int(numStreams)):
-			streams.append(input("What is the name of the channel?"))
+		cmdline = ''.join(sys.argv[2:])
+		streams = cmdline.split(",")
 		# Create Kadgar link
 		kadgar = "www.kadgar.net/live/"
-		for i in range(int(numStreams)):
+		for i in range(len(streams)):
 			kadgar = kadgar + streams[i] + "/"
 		webbrowser.open(kadgar)
 
