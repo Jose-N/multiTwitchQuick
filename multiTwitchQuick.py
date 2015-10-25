@@ -20,4 +20,12 @@ if len(sys.argv) > 1:
 #### This might require some working with Java Script, need to reasearch ####
 if len(sys.argv) > 1:
 	if  "live?" == ''.join(sys.argv[1]):
-
+		getSourceChan = requests.get("https://api.twitch.tv/kraken/users/dark_fleet/follows/channels/?limit=100")
+		textChan = json.loads(getSourceChan.text)
+		for i in range(len(textChan["follows"])):
+			channel  = textChan["follows"][i]["channel"]["name"]
+			getSourceStream = requests.get("https://api.twitch.tv/kraken/streams/" + channel)
+			textStream = json.loads(getSourceStream.text)
+			if textStream["stream"] != None: 
+				print(textStream["stream"]["channel"]["name"] + " is live playing " + textStream["stream"]["game"] + " with " +  str(textStream["stream"]["viewers"]) + " viewers \n")
+			
