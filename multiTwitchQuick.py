@@ -12,5 +12,9 @@ if len(sys.argv) > 1:
 		for i in range(int(numStreams)):
 			streams.append(input("What is the name of the channel?"))
 		# Create Kadgar link
+		kadgar = "www.kadgar.net/live/"
+		for i in range(int(numStreams)):
+			kadgar = kadgar + streams[i] + "/"
+		webbrowser.open(kadgar)
 
 # Open webbrowser
