@@ -11,6 +11,6 @@ if len(sys.argv) > 1:
 		numStreams = input("How many channels do you want to watch?")
 		for i in range(int(numStreams)):
 			streams.append(input("What is the name of the channel?"))
+		# Create Kadgar link
 
 # Open webbrowser
-# Create kadgar link  
