@@ -24,12 +24,15 @@ if len(sys.argv) > 1:
 		channels = [] 
 		for i in range(len(textChan["follows"])):
 			channel = textChan["follows"][i]["channel"]["name"]
-			channels.append(channel)
-		for x in range(len(channels)):
-			getSourceStream = requests.get("https://api.twitch.tv/kraken/streams/" + channels[x])
+			getSourceStream = requests.get("https://api.twitch.tv/kraken/streams/" + channel)
 			textStream = json.loads(getSourceStream.text)
 			if textStream["stream"] != None: 
-				print(channels[x] + " is live playing " + textStream["stream"]["game"] + " with " +  str(textStream["stream"]["viewers"]) + " viewers \n")
+				game = textStream["stream"]["game"]
+				viewers = str(textStream["stream"]["viewers"])
+				try:
+					print(channel + " is live playing " + game + " with " + viewers  + " viewers \n")
+				except:
+					print(channel + " is live, but not playing anything with " + viewers  + " viewers \n")
 	# Help for commands
 	elif "help" == ''.join(sys.argv[1]):
 		print("The commands for these channels are: \n")
